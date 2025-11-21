@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5"></path>
+                            <path d="M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <div class="header-text">
+                        <h1 class="app-title">Meme Generator</h1>
+                        <p class="app-subtitle">Create hilarious memes in seconds</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="app-container">
+            <aside class="control-panel">
+                <div class="panel-section">
+                    <div class="section-header">
+                        <svg class="section-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <h3>Upload Image</h3>
+                    </div>
+                    <label class="upload-area" for="imageUpload">
+                        <div class="upload-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                        </div>
+                        <div class="upload-text">
+                            <span class="upload-primary">Click to upload</span>
+                            <span class="upload-secondary">or drag and drop</span>
+                        </div>
+                        <input type="file" id="imageUpload" accept="image/*" class="file-input">
+                    </label>
+                </div>
+
+                <div class="panel-section">
+                    <div class="section-header">
+                        <svg class="section-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                            <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>
+                        <h3>Meme Templates</h3>
+                    </div>
+                    <div class="template-gallery" id="templateGallery">
+                        <!-- Templates will be loaded here -->
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <div class="section-header">
+                        <svg class="section-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                        <h3>Text Editor</h3>
+                    </div>
+                    <div class="text-editor">
+                        <textarea id="textInput" class="text-input" placeholder="Enter your meme text... (Press Enter for line breaks)" rows="3"></textarea>
+                        
+                        <div class="control-row">
+                            <label class="control-label">
+                                <span>Font Size</span>
+                                <span class="value-display" id="fontSizeValue">40px</span>
+                            </label>
+                            <input type="range" id="fontSize" class="slider" min="10" max="150" value="40">
+                        </div>
+
+                        <div class="color-picker-group">
+                            <div class="color-picker-item">
+                                <label for="textColor" class="color-label">Text Color</label>
+                                <div class="color-input-wrapper">
+                                    <input type="color" id="textColor" value="#ffffff" class="color-input">
+                                </div>
+                            </div>
+                            <div class="color-picker-item">
+                                <label for="borderColor" class="color-label">Border Color</label>
+                                <div class="color-input-wrapper">
+                                    <input type="color" id="borderColor" value="#000000" class="color-input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="action-buttons">
+                            <button id="addTextBtn" class="btn btn-primary">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                                Add Text
+                            </button>
+                            <div class="position-buttons">
+                                <button id="positionTopBtn" class="btn btn-secondary btn-small">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="18 15 12 9 6 15"></polyline>
+                                    </svg>
+                                    Top
+                                </button>
+                                <button id="positionBottomBtn" class="btn btn-secondary btn-small">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                    Bottom
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <div class="section-header">
+                        <svg class="section-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                        <h3>Active Text Boxes</h3>
+                    </div>
+                    <div id="textBoxesList" class="text-boxes-list">
+                        <!-- Active text boxes will be listed here -->
+                    </div>
+                </div>
+
+                <div class="panel-section panel-section-action">
+                    <button id="downloadBtn" class="btn btn-download">
+                        <span class="btn-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </span>
+                        <span>Download Meme</span>
+                    </button>
+                </div>
+            </aside>
+
+            <main class="canvas-area">
+                <div class="canvas-wrapper">
+                    <canvas id="memeCanvas"></canvas>
+                    <div class="canvas-overlay" id="canvasOverlay"></div>
+                    <div class="canvas-placeholder" id="canvasPlaceholder">
+                        <div class="placeholder-content">
+                            <div class="placeholder-icon">
+                                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                    <polyline points="21 15 16 10 5 21"></polyline>
+                                </svg>
+                            </div>
+                            <h3>Ready to create?</h3>
+                            <p>Upload an image or choose a template to get started</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
